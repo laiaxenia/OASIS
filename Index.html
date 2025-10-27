@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OASIS - Tienda de Ropa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="Oasis.css" rel="stylesheet">
+</head>
+<body>
+    <!--Banner inicial amb animació JS-->
+    <div class="shipping-banner">
+        <p><img id="marquee-image" src="Logos/Ofertas black friday soon.png" alt="Banner d'ofertes black friday"></p>
+    </div>
+    <!-- Banner amb el logo d'OASIS (creem un contenidor per al logo central i el menu hamburguesa)--> 
+    <div class="logo-banner">
+        <div class="logo-container">
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="logo">
+                <h1 class="visually-hidden">
+                    OASIS
+                </h1>
+                <img src="Logos/Logo Oasis.png" alt="OASIS" class="logo-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner de categories del menú -->
+    <nav class="categories-nav">
+        <div class="categories-container">
+            <ul class="sub-nav-links">
+                <li><a href="#VINILS">VINILS</a></li>
+                <li><a href="#GÈNERES">GÈNERES</a></li>
+                <li><a href="#ARTISTES">ARTISTES</a></li>
+                <li><a href="#OFERTES">OFERTES</a></li>
+                <li><a href="#REVENTA">REVENTA</a></li>
+            </ul>
+            <!-- Accions de la dreta (idioma, compte, busqueda, carret) -->
+            <ul class="nav-actions right">
+                <li class="language">
+                    <a href="#" title="Idioma" class="lang-toggle">CATALÀ ▼</a>
+                    <ul class="lang-dropdown">
+                        <li><a href="#" onclick="changeLang('es')">ES</a></li>
+                        <li><a href="#" onclick="changeLang('en')">EN</a></li>
+                        <li><a href="#" onclick="changeLang('ca')">CA</a></li>
+                    </ul>
+                </li>
+                <li class="carret">
+                    <a href="#carret" title="Carret" class="icon-link usuario-icon">
+                        <div class="icon-container">
+                            <img src="./Fotos/cistell negre.png" alt="CARRET" class="logo-image default">
+                            <img src="./Fotos/cistell verd.png" alt="CARRET" class="logo-image hover">
+                        </div>
+                    </a>
+                </li>
+                <li class="usuari">
+                    <a href="#compte" title="Perfil" class="icon-link busqueda-icon">
+                        <div class="icon-container">
+                            <img src="./Fotos/icona negre.png" alt="ICONA" class="logo-image default">
+                            <img src="./Fotos/icona verd.png" alt="ICONA" class="logo-image hover">
+                        </div>
+                    </a>
+                </li>
+                <li class="búsqueda">
+                    <a href="#búsqueda" title="Buscar" class="icon-link carret-icon">
+                        <div class="icon-container">
+                            <img src="./Fotos/lupa negre.png" alt="LUPA" class="logo-image default">
+                            <img src="./Fotos/lupa verd.png" alt="LUPA" class="logo-image hover">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- Modal de Buscador -->
+<div id="search-modal" class="search-modal" style="display: none;">
+    <div class="search-modal-content">
+        <span class="close-search">&times;</span>
+        <h3>Busca el teu vinil</h3>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Busca el teu vinil, Oasis, The beattles..." required>
+            <button type="submit">Buscar</button>
+        </form>
+        <div id="search-results" style="margin-top: 20px;"></div>
+    </div>
+</div>
+
+<!-- Modal de Login/Signup -->
+<div id="auth-modal" class="auth-modal" style="display: none;">
+    <div class="auth-modal-content">
+        <span class="close-auth">&times;</span>
+        <div id="login-form">
+            <h3>Inicia Sessió</h3>
+            <form>
+                <input type="email" placeholder="Correu electrònic" required>
+                <input type="password" placeholder="Contrasenya" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <p>No tens compte? <a href="#" onclick="switchToSignup()">Registra't aquí</a></p>
+        </div>
+        <div id="signup-form" style="display: none;">
+            <h3>Registra't</h3>
+            <form>
+                <input type="text" placeholder="Nom" required>
+                <input type="email" placeholder="Correu electrònic" required>
+                <input type="password" placeholder="Contrasenya" required>
+                <button type="submit">Registrar</button>
+            </form>
+            <p>Ja tens compte? <a href="#" onclick="switchToLogin()">Inicia sessió aquí</a></p>
+        </div>
+    </div>
+</div>
+
+<!-- Secció hero amb un vinil giratori -->
+<section class="hero">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <!-- Vinil -->
+            <img src="Logos/Vinil giratori.png" alt="Vinil giratori" class="hero-vinyl">
+            <!-- Boto de Spotify centrat sobre el vinil -->
+            <a href="https://open.spotify.com/playlist/5PtDTZSyc9gsepq5wYOaTs" target="_blank" class="spotify-button">
+                <img src="Fotos/Logo spotify.png" alt="Spotify" class="spotify-icon">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓ DE VINILS: Dues files horitzontals de 4 productes cadascuna, cadascun amb una imatge (canvi a una altra al hover), nom i preu -->
+<section id="VINILS" class="products-grid">
+    <div class="grid-container">
+        <!-- Fila 1 - Producte 1 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="Album/Beattles.jpg" alt="Beattles" class="product-img default">
+                <img src="Vinils/Beattles.png" alt="Beattles Hover" class="product-img hover"> <!-- Canvia aquesta ruta per la teva imatge de hover -->
+            </div>
+            <div class="product-details">
+                <h3>THE BEATTLES - Abbey Road</h3>
+                <span class="price">€35,99</span>
+            </div>
+        </div>
+
+        <!-- Fila 1 - Producte 2 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="Album/Billy Joel.jpg" alt="Billy Joel" class="product-img default">
+                <img src="Vinils/Billi Joel Vinil.png" alt="Billy Joel Hover" class="product-img hover"> <!-- Canvia aquesta ruta per la teva imatge de hover -->
+            </div>
+            <div class="product-details">
+                <h3>BILLY JOEL - The Stranger</h3>
+                <span class="price">€25,99</span>
+            </div>
+        </div>
+
+        <!-- Fila 1 - Producte 3 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="Album/Brat.png" alt="Brat" class="product-img default">
+                <img src="Vinils/Brat Vinil.png" alt="Brat Hover" class="product-img hover"> <!-- Canvia aquesta ruta per la teva imatge de hover -->
+            </div>
+            <div class="product-details">
+                <h3>CHARLI XCX - brat</h3>
+                <span class="price">€20,99</span>
+            </div>
+        </div>
+
+        <!-- Fila 1 - Producte 4 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="Album/Bruno Mars.jpg" alt="Bruno Mars" class="product-img default">
+                <img src="Vinils/Bruno Mars Vinil.png" alt="Bruno Mars Hover" class="product-img hover"> <!-- Canvia aquesta ruta per la teva imatge de hover -->
+            </div>
+            <div class="product-details">
+                <h3>BRUNO MARS - Unorthodox Jukebox</h3>
+                <span class="price">€22,99</span>
+            </div>
+        </div>
+
+        <!-- Fila 2 - Producte 5 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="Album/Mecano.jpg" alt="Mecano" class="product-img default">
+                <img src="Vinils/Mecano Vinil.png" alt="Mecano Hover" class="product-img hover"> <!-- Canvia aquesta ruta per la teva imatge de hover -->
+            </div>
+            <div class="product-details">
+                <h3>MECANO - Aidalai</h3>
+                <span class="price">€29,99</span>
+            </div>
+        </div>
+
+        <!-- Fila 2 - Producte 6 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="Album/Michael Jakson.jpg" alt="Michael Jakson" class="product-img default">
+                <img src="Vinils/Michael Jakson.png" alt="Michael Jakson Hover" class="product-img hover"> <!-- Canvia aquesta ruta per la teva imatge de hover -->
+            </div>
+            <div class="product-details">
+                <h3>MICHAEL JAKSON - Bad</h3>
+                <span class="price">€29,99</span>
+            </div>
+        </div>
+
+        <!-- Fila 2 - Producte 7 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="Album/Oasis.jpg" alt="Oasis" class="product-img default">
+                <img src="Vinils/Oasis Vinil.png" alt="Oasis Hover" class="product-img hover"> <!-- Canvia aquesta ruta per la teva imatge de hover -->
+            </div>
+            <div class="product-details">
+                <h3>OASIS - Definitely Maybe</h3>
+                <span class="price">€25,99</span>
+            </div>
+        </div>
+
+        <!-- Fila 2 - Producte 8 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="Album/Spice Girls.webp" alt="Spice Girls" class="product-img default">
+                <img src="Vinils/Spice Girl Vinil.png" alt="Spice Girls Hover" class="product-img hover"> <!-- Canvia aquesta ruta per la teva imatge de hover -->
+            </div>
+            <div class="product-details">
+                <h3>SPICE GIRLS - Spice</h3>
+                <span class="price">€35,99</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NOVA SECCIÓ DE GÈNERES: Grid de 4 columnes, amb dos espais alats (cada un span 2 columnes) a la primera fila, i dos més a la segona fila -->
+<section id="GÈNERES" class="genres-section">
+    <div class="genres-grid">
+        <!-- Primera fila: Dos espais grans (cada un amb mida de dos vinils, span 2) -->
+        <div class="genre-space large">
+            <div class="image-container-large">
+                <img src="./Gèneres/Jazz&Blues.png" alt="Jazz&Blues" class="product-img default">
+                <img src="./Gèneres/Jazz&Blues  verd.png" alt="Jazz&Blues Hover" class="product-img hover">
+                <div class="genre-overlay">
+                    <h3>JAZZ&BLUES</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="genre-space large">
+            <div class="image-container-large">
+                <img src="./Gèneres/Rock.png" alt="Rock" class="product-img default">
+                <img src="./Gèneres/Rock verd.png" alt="Rock Hover" class="product-img hover">
+                <div class="genre-overlay">
+                    <h3>ROCK</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segona fila: Dos espais més grans (cada un span 2) -->
+        <div class="genre-space large">
+            <div class="image-container-large">
+                <img src="./Gèneres/Metal.png" alt="Metal" class="product-img default">
+                <img src="./Gèneres/Metal verd.png" alt="Metal Hover" class="product-img hover">
+                <div class="genre-overlay">
+                    <h3>METAL</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="genre-space large">
+            <div class="image-container-large">
+                <img src="./Gèneres/Pop.png" alt="Pop" class="product-img default">
+                <img src="./Gèneres/Pop verd.png" alt="Pop Hover" class="product-img hover">
+                <div class="genre-overlay">
+                    <h3>POP</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NOVA SECCIÓ D'ARTISTES: Una fila de 4 caselles amb la mateixa mida i estil que els vinils -->
+<section id="ARTISTES" class="artists-section">
+    <h2>TOP ARTISTES DEL MES</h2>
+    <p>Aquests quatre artistes es renoven cada mes, tenin en compte les cançons més escoltades del moment. 
+        Els albums dels 4 artistes tindràn un descompte del 15% durant tot el mes. 
+        Només s'apliquen a la venda de la web Oasis. NO s'apliquen a la part de reventa.<div class="artists-grid">
+        <!-- Fila d'artistes: 4 caselles -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="./Artistes/Rels b.png" alt="Artista 1" class="product-img default">
+            </div>
+            <div class="product-details">
+                <h3>RELS B</h3>
+            </div>  
+        </div>
+
+        <div class="product-space">
+            <div class="image-container">
+                <img src="./Artistes/Aitana.png" alt="Artista 2" class="product-img default">
+            </div>
+            <div class="product-details">
+                <h3>AITANA</h3>
+            </div>
+        </div>
+
+        <div class="product-space">
+            <div class="image-container">
+                <img src="./Artistes/Ed sheeran.png" alt="Artista 3" class="product-img default">
+            </div>
+            <div class="product-details">
+                <h3>ED SHEERAN</h3>
+            </div>
+        </div>
+
+        <div class="product-space">
+            <div class="image-container">
+                <img src="./Artistes/Emilia.png" alt="Artista 4" class="product-img default">
+            </div>
+            <div class="product-details">
+                <h3>EMILIA MERNES</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NOVA SECCIÓ D'OFERTES -->
+<section id="OFERTES" class="offers-section">
+    <!-- Banner superior full-width amb animació -->
+    <div class="offers-full-banner">
+        <p><img id="offers-marquee-top" src="./Logos/Ofertes 15%.png" alt="Banner d'ofertes del mes"></p>
+    </div>
+
+    <!-- Grid de 4 productes amb preus amb descompte -->
+    <div class="offers-grid-container">
+        <!-- Producte 1 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="./Album/Rels b.png" alt="Rels B" class="product-img default">
+                <img src="./Vinils/Rels B Vinil.png" alt="Rels B Hover" class="product-img hover">
+            </div>
+            <div class="product-details">
+                <h3>RELS B - a new star (1993)</h3>
+                <span class="old-price"><del>€35,99</del></span>
+                <span class="price">€28,79</span>
+            </div>
+        </div>
+
+        <!-- Producte 2 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="./Album/Aitana.png" alt="Aitana" class="product-img default">
+                <img src="./Vinils/Aitana Vinil.png" alt="Aitana Hover" class="product-img hover">
+            </div>
+            <div class="product-details">
+                <h3>AITANA - Alpha</h3>
+                <span class="old-price"><del>€25,99</del></span>
+                <span class="price">€20,79</span>
+            </div>
+        </div>
+
+        <!-- Producte 3 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="./Album/Ed Sheeran.png" alt="Ed Sheeran" class="product-img default">
+                <img src="./Vinils/Ed Sheeran Vinil.png" alt="Ed Sheeran Hover" class="product-img hover">
+            </div>
+            <div class="product-details">
+                <h3>ED SHEERAN - Play</h3>
+                <span class="old-price"><del>€20,99</del></span>
+                <span class="price">€16,79</span>
+            </div>
+        </div>
+
+        <!-- Producte 4 -->
+        <div class="product-space">
+            <div class="image-container">
+                <img src="./Album/Emilia.png" alt="Emilia Mernes" class="product-img default">
+                <img src="./Vinils/Emilia Vinil.png" alt="Emilia Mernes Hover" class="product-img hover">
+            </div>
+            <div class="product-details">
+                <h3>EMILIA MERNES - .mp3</h3>
+                <span class="old-price"><del>€35,99</del></span>
+                <span class="price">€28,79</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botó i missatge inferior -->
+    <div class="offers-bottom">
+        <button id="notify-btn">AVISA'M PER MÉS OFERTES</button>
+        <p>Les ofertes es renoven cada mes, i estan aplicades a tots els hits del artista. 
+            Aquest mes tenim ofertes del 15% per els artistes Rels B, Aitana, Ed Sheeran i Emilia Mernes.</p>
+        <form id="email-form" style="display: none;">
+            <input type="email" placeholder="Correu electrònic" required>
+            <button type="submit">SUBSCRIU</button>
+        </form>
+    </div>
+
+    <!-- Banner inferior full-width amb animació (igual al superior) -->
+    <div class="offers-full-banner">
+        <p><img id="offers-marquee-bottom" src="./Logos/Ofertes 15%.png" alt="Banner d'ofertes del mes"></p>
+    </div>
+</section>
+
+<!-- NOVA SECCIÓ DE REVENTA -->
+<section id="REVENTA" class="resale-section">
+    <div class="resale-container">
+        <!-- Casella central (botó) -->
+        <div class="resale-card" id="resale-card">
+            <div class="image-container click-toggle">
+                <img src="./Fotos/Candau tancat.png" alt="Candau Tancat" class="product-img default"> <!-- Canvia per la teva imatge default -->
+                <img src="./Fotos/Candau.png" alt="Candau Obert" class="product-img hover"> <!-- Canvia per la teva imatge click -->
+            </div>
+            <div class="product-details">
+                <h3>Ven el teu Vinil</h3>
+                <button class="resale-toggle-btn">COMENÇA A VENDRE</button>
+            </div>
+        </div>
+
+        <!-- Formulari (amagat inicialment) -->
+        <form class="resale-form" id="resale-form">
+            <h3>Dades Personals</h3>
+            <input type="text" placeholder="Nom" required>
+            <input type="text" placeholder="Cognoms" required>
+            <input type="email" placeholder="Correu electrònic" required>
+            <input type="tel" placeholder="Telèfon" required>
+            <h3>Dades del Producte</h3>
+            <input type="text" placeholder="Nom de l'àlbum" required>
+            <input type="text" placeholder="Nom de l'artista" required>
+            <input type="number" placeholder="Preu (€)" step="0.01" required>
+            <button type="submit">ENVIA LA TEVA OFERTA</button>
+        </form>
+    </div>
+
+    <!-- Exemples de vendes -->
+    <div class="resale-examples">
+        <h2>VENDES RECENTS</h2>
+        <div class="resale-grid">
+            <!-- Exemple 1 -->
+            <div class="product-space">
+                <div class="image-container">
+                    <img src="./Reventa/Leon Bridges.png" alt="Leon Bridges" class="product-img default">
+                    <img src="./Reventa/Leon Bridges 2.png" alt="Leon Bridges Hover" class="product-img hover">
+                </div>
+                <div class="product-details">
+                    <span class="seller">Joan Garcia</span>
+                    <h3>Vinil - LEON BRIDGES</h3>
+                    <span class="price">€30,00</span>
+                </div>
+            </div>
+
+            <!-- Exemple 2 -->
+            <div class="product-space">
+                <div class="image-container">
+                    <img src="./Reventa/Lo mas disco.png" alt="Lo mas disco" class="product-img default">
+                    <img src="./Reventa/Lo mas disco 2.png" alt="Lo mas disco Hover" class="product-img hover">
+                </div>
+                <div class="product-details">
+                    <span class="seller">Maria Lopez</span>
+                    <h3>Vinil - LO MAS DISCO 1</h3>
+                    <span class="price">€22,00</span>
+                </div>
+            </div>
+
+            <!-- Exemple 3 -->
+            <div class="product-space">
+                <div class="image-container">
+                    <img src="./Reventa/Neil Young Zuma.png" alt="Neil Young Zuma" class="product-img default">
+                    <img src="./Reventa/Neil Young Zuma 2.png" alt="Neil Young Zuma Hover" class="product-img hover">
+                </div>
+                <div class="product-details">
+                    <span class="seller">Pedro Ruiz</span>
+                    <h3>Vinil - NEIL YOUNG ZUMA</h3>
+                    <span class="price">€18,00</span>
+                </div>
+            </div>
+
+            <!-- Exemple 4 -->
+            <div class="product-space">
+                <div class="image-container">
+                    <img src="./Reventa/Those Were The Days.png" alt="Those Were The Days" class="product-img default">
+                    <img src="./Reventa/Those Were The Days 2.png" alt="Those Were The Days Hover" class="product-img hover">
+                </div>
+                <div class="product-details">
+                    <span class="seller">Laura Martin</span>
+                    <h3>Vinil - THOSE WERE THE DAYS</h3>
+                    <span class="price">€32,00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer basado en la foto -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Columna 1: Modificada a "10% de descompte" amb formulari simple -->
+            <div class="footer-column newsletter">
+                <h5>Aconsegueix el teu 10% de descompte</h5>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Correu electrònic" required>
+                    <button type="submit">DESCOMPTE</button>
+                </form>
+            </div>
+
+            <!-- Columna 2: Boring Stuff -->
+            <div class="footer-column">
+                <h5>Boring Stuff</h5>
+                <ul>
+                    <li><a href="#privacitat">Política de Privacitat</a></li>
+                    <li><a href="#termes i condicions">Termes i Condicions</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Support -->
+            <div class="footer-column">
+                <h5>Suport</h5>
+                <ul>
+                    <li><a href="#devolucions">Devolucions</a></li>
+                    <li><a href="#seguimient">Seguimient de la comanda</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contacte">Contacte</a></li>
+                </ul>
+            </div>
+
+
+            <!-- Columna 5: Join the Movement (formulario) -->
+            <div class="footer-column newsletter">
+                <h5>Join the Movement</h5>
+                <p>Sign up to our email list and get exclusive content</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Correu electrónico" required>
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span>
+                        Accepto rebre contingut d'OASIS via e-mail i he llegit i acceptat la Politica de Privacitat.
+                    </label>
+                    <button type="submit">ACCEDIR</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; OASIS</p>
+        </div>
+    </footer>
+
+    
+
+  <!-- Banner de cookies (opcional, al final) -->
+<div class="cookies-banner" id="cookies-banner">  <!-- <-- AFEGEIX id="cookies-banner" per seleccionar-lo fàcil amb JS -->
+    <p>Utilitzem cookies pròpies i de tercers per analitzar l'ús del lloc web i millorar l'experiència de navegació. <a href="#config">Configurar</a> | <a href="#denegar" onclick="hideCookies()">Denegar</a> | <a href="#acceptar" onclick="hideCookies()">Acceptar</a></p>
+</div>
+
+<!-- Nou: Enllaç a l'arxiu JavaScript per l'animació -->
+<script src="Animacions javascript.js"></script>
+<script>
+    // Función básica para cambiar idioma
+    function changeLang(lang) {
+        document.querySelector('.lang-toggle').textContent = lang.toUpperCase() + ' ▼';
+        console.log('Idioma cambiado a:', lang);
+    }
+    
+    // NOVA FUNKCIÓ: Per amagar el banner de cookies
+    function hideCookies() {
+        document.getElementById('cookies-banner').style.display = 'none';  // <-- AIXÒ: Amaga el div al clicar
+    }
+
+    // Nova funció per mostrar el formulari d'ofertes
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('notify-btn').addEventListener('click', function() {
+            document.getElementById('email-form').style.display = 'block';
+        });
+
+        // Nova funció per la secció de reventa
+        const resaleToggleBtn = document.querySelector('.resale-toggle-btn');
+        const resaleContainer = document.querySelector('.resale-container');
+        const resaleImageContainer = document.querySelector('.click-toggle');
+
+        resaleToggleBtn.addEventListener('click', function() {
+            // Toggle classe active per moure la casella i mostrar formulari
+            resaleContainer.classList.toggle('active');
+
+            // Canvia la imatge en cada clic (toggle hover)
+            resaleImageContainer.classList.toggle('image-clicked');
+        });
+    });
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994be27b3d331a80',t:'MTc2MTUwMTk1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

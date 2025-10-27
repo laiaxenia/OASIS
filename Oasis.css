@@ -1,0 +1,1299 @@
+/* Posem un estil bàsic */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Banner "OFERTES DE BLACK FRIDAY SOON" */
+.shipping-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #556b2f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 11;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    overflow: hidden;
+}
+.shipping-banner p {
+    margin: 0;
+    position: relative;
+    line-height: 1;
+}
+
+/* Posem estils per a la imatge animada */
+#marquee-image {
+    position: relative;
+    display: inline-block;
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+    left: 0;
+    object-fit: contain; 
+}
+
+/* Banner amb el logo d'OASIS */
+.logo-banner {
+    position: fixed;
+    top: 33px;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+    padding: 15px 0;
+    border-bottom: 3px solid #556b2f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    position: relative;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-text {
+    font-size: 24px; 
+}
+.logo-image {
+    height: 40px;
+    width: auto;
+    margin: 0;
+}
+
+/* Banner amb les categories del menú principal */
+.categories-nav {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.93);
+    z-index: 9;
+    padding: 10px 0; 
+    border-bottom: 3px solid #556b2f;
+}
+.categories-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 62px 3ch 0; 
+    gap: 40px;
+}
+.sub-nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    justify-content: center;
+    flex: none;
+    overflow-x: auto;
+}
+.sub-nav-links a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+.sub-nav-links a:hover {
+    color: #556b2f;
+}
+
+/* Accions de la dreta: idioma, carret de la compra i compta de l'usuari */
+.nav-actions.right {
+    display: flex;
+    list-style: none;
+    gap: 7px;
+    align-items: center;
+    flex: none;
+    justify-content: flex-end;
+    position: absolute;
+    right: 20px;
+    top: 70%;
+    transform: translateY(-50%);
+}
+.nav-actions.right .lang-toggle {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: color 0.3s;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+.nav-actions.right svg {
+    fill: #000;
+    border: 1px solid #fff;
+    transition: fill 0.3s, border-color 0.3s;
+    width: 20px;
+    height: 20px;
+}
+.nav-actions.right a:hover svg {
+    fill: #556b2f; 
+    border-color: #556b2f;
+}
+.nav-actions.right .lang-toggle:hover {
+    color: #556b2f;
+}
+.nav-actions.right .logo-image {
+    height: 30px;
+    width: auto;
+}
+.lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    background-color: #556b2f;
+    list-style: none;
+    min-width: 80px;
+    border-radius: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+.nav-actions.right .language:hover .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.lang-dropdown li {
+    padding: 10px;
+}
+.lang-dropdown a {
+    color: white; 
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s;
+}
+.lang-dropdown a:hover {
+    color: black ;
+}
+
+/* Contenidor per les icones (similar a image-container per al canvi de color al hover) */
+.icon-container {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.icon-container .default,
+.icon-container .hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.icon-container .default {
+    opacity: 1;
+    z-index: 1;
+}
+
+.icon-container .hover {
+    opacity: 0;
+    z-index: 0;
+}
+
+.icon-container:hover .default {
+    opacity: 0;
+}
+
+.icon-container:hover .hover {
+    opacity: 1;
+}
+
+/* Hamburguesa per a mòbil */
+.hamburger {
+    position: absolute;
+    left: 20px;
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 12;
+}
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #556b2f;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* */
+.menu-toggle {
+    display: none;
+}
+.menu-toggle:checked + .hamburger span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.menu-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle:checked + .hamburger span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Hero section amb overlay */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-image: url('https://via.placeholder.com/1920x1080/FAFAFA/000000?text=Background+Art+Milfshakes');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 125px; 
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 50px;
+    letter-spacing: 3px; 
+}
+.hero-handle {
+    font-size: 16px; 
+}
+
+/*Cercador*/
+.search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-modal-content {
+    background-color: #556b2f;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-search {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+#search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#search-form button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#search-results {
+    max-height: 300px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+#search-results h4 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+/*Sigin, login*/
+.auth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-modal-content {
+    background-color: #556b2f;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-auth {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: black;
+}
+
+.auth-modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.auth-modal input {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.auth-modal button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.auth-modal a {
+    color: white;
+    text-decoration: none;
+}
+
+.auth-modal a:hover {
+    text-decoration: underline;
+}
+
+/* Estils per al vinil */
+.hero-vinyl {
+    display: block;
+    width: 80vw; 
+    max-width: 500px;
+    height: auto;
+    margin: -5px auto;
+    animation: spinVinyl 6s linear infinite;
+    filter: drop-shadow(0 10px 20px #556b2f);
+}
+
+@keyframes spinVinyl {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Boto d'Spotify */
+.spotify-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    background-color: #556b2f; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 3; 
+}
+
+.spotify-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.spotify-icon {
+    width: 72px;
+    height: 72px;
+    filter: brightness(0) invert(1); 
+}
+
+/* SECCIÓ DE PRODUCTES: Grid simple de dues files de 4 productes (canvi d'imatge al hover, nom i preu a sota) */
+.products-grid {
+    padding: 80px 20px;
+    background-color: white; /* Fons suau per destacar */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 productes en una fila horitzontal */
+    gap: 30px; /* Espai entre productes */
+}
+
+.product-space {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-space:hover {
+    box-shadow: 0 5px 15px #556b2f; /* Ombra blava suau al hover */
+}
+
+/* Contenidor per les imatges (default i hover) */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Alçada fixa per uniformitat */
+    margin-bottom: 15px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Desactiva hover per imatges d'artistes (només default visible) */
+.artists-section .image-container:hover .default {
+    opacity: 1;
+}
+
+.artists-section .image-container:hover .hover {
+    opacity: 0;
+}
+
+/* Desactiva hover per imatge de reventa (només canvia al clic) */
+.resale-card .image-container:hover .default {
+    opacity: 1;
+}
+
+.resale-card .image-container:hover .hover {
+    opacity: 0;
+}
+
+.product-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.default {
+    opacity: 1;
+    z-index: 1;
+}
+
+.hover {
+    opacity: 0;
+    z-index: 0;
+}
+
+.image-container:hover .default {
+    opacity: 0;
+}
+
+.image-container:hover .hover {
+    opacity: 1;
+}
+
+.product-details {
+    margin-top: auto; /* Empènyer cap avall */
+}
+
+.product-details h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.price {
+    font-size: 18px;
+    font-weight:  bold;
+    color: black ;
+    text-align: center;
+}
+
+/* NOVA SECCIÓ DE GÈNERES: Similar a products, però amb elements grans (span 2) */
+.genres-section {
+    padding: 120px 20px;
+    background-color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.genres-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.genre-space {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.genre-space.large {
+    grid-column: span 2; /* Cada espai gran ocupa la mida de dos vinils */
+    padding: 15px; /* Padding intern per espaiar dins de la casella */
+    border: 1px solid #eee; /* Bordes grisos suaus al voltant */
+    border-radius: 8px; /* Cantonades arrodonides */
+    background-color: #fff; /* Fons blanc per la casella */
+}
+
+.genre-space.large:hover {
+    box-shadow: 0 5px 15px #556b2f; /* Ombra verda suau al hover */
+}
+
+.image-container-large {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Alçada ajustada per cabre dins de la casella amb padding */
+    margin-bottom: 10px; /* Espai sota la imatge dins de la casella */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.image-container-large .product-img {
+    height: 100%;
+    object-fit: cover; /* O 'contain' si vols que quedi tot visible sense retallar */
+}
+
+/* NOU: Regles de hover per canviar les imatges als gèneres (igual que als vinils) */
+.image-container-large .default {
+    opacity: 1;
+    z-index: 1;
+}
+
+.image-container-large .hover {
+    opacity: 0;
+    z-index: 0;
+}
+
+.image-container-large:hover .default {
+    opacity: 0; /* Amaga la imatge normal al hover */
+}
+
+.image-container-large:hover .hover {
+    opacity: 1; /* Mostra la imatge hover al cursor */
+}
+
+/* NOU: Overlay per al text del gènere, centrat a la imatge */
+.genre-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    pointer-events: none; /* Per no interferir amb el hover de la imatge */
+    z-index: 2;
+    opacity: 1; /* SEMPRE visible i estàtic */
+    transition: none; /* Sense transició, perquè es quedi estàtic */
+}
+
+.genre-overlay h3 {
+    font-size: 48px; /* Gran per al mig de la imatge, ajusta segons necessitis */
+    font-weight: bold;
+    color: #fff; /* Blanc per contrast amb fons foscos, com a les teves imatges */
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* NOVA SECCIÓ D'ARTISTES: Exactament com els vinils, però només una fila de 4 */
+.artists-section {
+    padding: 120px 20px;
+    background-color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.artists-section h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.artists-section p {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    grid-template-rows: 1fr; /* Només una fila */
+}
+
+/* Estils per la secció d'ofertes */
+.offers-section {
+    padding: 0 20px 120px;
+    background-color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.offers-full-banner {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background-color: #556b2f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    overflow: hidden;
+}
+
+.offers-full-banner p {
+    margin: 0;
+    position: relative;
+    line-height: 1;
+}
+
+#offers-marquee-top,
+#offers-marquee-bottom {
+    position: relative;
+    display: inline-block;
+    height: 28px;
+    width: auto;
+    vertical-align: middle;
+    left: 0;
+    object-fit: contain; 
+}
+
+.offers-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.offers-bottom {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#notify-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+#notify-btn:hover {
+    background-color: #556b2f;
+}
+
+.offers-bottom p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#email-form input[type="email"] {
+    padding: 10px;
+    border: 1px solid #556b2f;
+    border-radius: 4px;
+}
+
+#email-form button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+/* Estils per preus amb descompte */
+.old-price {
+    text-decoration: line-through;
+    color: #556b2f;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* NOVA SECCIÓ DE REVENTA */
+.resale-section {
+    padding: 120px 20px;
+    background-color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.resale-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+    transition: all 0.5s ease;
+}
+
+.resale-card {
+    flex: 0 0 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #eee;
+    cursor: pointer;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    order: 2;
+}
+
+.resale-card:hover {
+    box-shadow: 0 5px 15px #556b2f;
+}
+
+.resale-container.active .resale-card {
+    order: 1;
+    transform: translateX(-20%);
+}
+
+.resale-form {
+    display: none;
+    flex: 1;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #556b2f;
+    order: 2;
+}
+
+.resale-container.active .resale-form {
+    display: block;
+    order: 2;
+    transform: translateX(20%);
+}
+
+.resale-form h3 {
+    color: #556b2f;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.resale-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.resale-form button[type="submit"] {
+    background-color: black ;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.resale-form button[type="submit"]:hover {
+    background-color: #556b2f;
+}
+
+.resale-toggle-btn {
+    background-color: Black ;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.resale-toggle-btn:hover {
+    background-color: #556b2f;
+}
+
+/* Canvi d'imatge al clic (en lloc de hover) */
+.click-toggle {
+    cursor: pointer;
+}
+
+.click-toggle.image-clicked .default {
+    opacity: 0;
+}
+
+.click-toggle.image-clicked .hover {
+    opacity: 1;
+}
+
+/* Exemples de reventa */
+.resale-examples h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.resale-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.seller {
+    display: block;
+    color: #556b2f;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* Estil del footer */
+.footer {
+    background-color: #556b2f; 
+    color: black ;
+    padding: 40px 0 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 150px;
+}
+
+.footer-column h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: white  ;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: white ;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: black ; 
+}
+
+.newsletter {
+    text-align: left;
+}
+
+.newsletter p {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: white ;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    font-size: 12px;
+    color: white ;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 8px;
+    margin-top: 2px;
+    appearance: none; 
+}
+
+.checkmark {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid white;
+    margin-right: 8px;
+    position: relative;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 0;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.newsletter-form button {
+    background-color: black;
+    color: #556b2f;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+}
+
+.newsletter-form button:hover {
+    background-color: #fff;
+    color: #556b2f;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #556b2f;
+    color: #556b2f;
+    font-size: 12px;
+}
+
+/* Banner de cookies */
+.cookies-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(85, 107, 47, 0.55);
+    color: white;
+    padding: 15px 20px;
+    font-size: 12px;
+    border-top: 1px solid #556b2f; 
+    z-index: 5;
+    text-align: center;
+}
+
+.cookies-banner a {
+    color: white;
+    text-decoration: underline;
+    margin: 0 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Banner "OFERTES BLACK FRIDAY SOON*/
+    .shipping-banner {
+        font-size: 11px;
+        padding: 6px 0;
+        line-height: 1.1;
+        overflow: hidden;
+    }
+    #marquee-image {
+        height: 16px;
+    }
+
+    /* Logo-banner */
+    .logo-banner {
+        top: 25px;
+        padding: 12px 0;
+    }
+    .logo-text {
+        font-size: 20px;
+    }
+    .hamburger {
+        display: flex;
+    }
+
+    /* Categories-nav */
+    .categories-nav {
+        top: 80px;
+    }
+
+    .sub-nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: #fff; 
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 15px;
+        padding-top: 25px;
+        transition: left 0.3s;
+        z-index: 8;
+        margin: 0;
+        overflow-y: auto;
+    }
+    .menu-toggle:checked ~ .categories-nav .sub-nav-links {
+        left: 0;
+    }
+    .menu-toggle:checked ~ .categories-nav .sub-nav-links a {
+        color: #fff;
+    }
+
+    /* Accions dretes */
+    .nav-actions.right {
+        gap: 3px;
+    }
+    .nav-actions.right .lang-toggle {
+        font-size: 11px;
+        margin-right: 3px;
+    }
+    .nav-actions.right svg {
+        width: 18px;
+        height: 18px;
+        fill: #556b2f;
+    }
+    .nav-actions.right .logo-image {
+        height: 18px;
+        width: auto;
+    }
+    .lang-dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background-color: transparent;
+        box-shadow: none;
+        right: auto;
+        top: auto;
+    }
+    .lang-dropdown li {
+        padding: 0;
+    }
+    .lang-dropdown a {
+        color: #556b2f;
+    }
+
+    .hero-title {
+        font-size: 40px;
+        letter-spacing: 2px;
+    }
+    .hero-handle {
+        font-size: 14px;
+    }
+    .hero {
+        margin-top: 113px;
+    }
+
+    /* Footer responsive */
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-column {
+        min-width: auto;
+    }
+    .newsletter {
+        text-align: center;
+    }
+    .newsletter-form button {
+        align-self: center;
+    }
+
+    .cookies-banner {
+        font-size: 11px;
+        padding: 10px 15px;
+    }
+    .cookies-banner a {
+        margin: 0 5px;
+    }
+
+    /* Responsive per gèneres i artistes */
+    .genres-grid, .artists-grid, .offers-grid-container, .resale-grid {
+        grid-template-columns: 1fr; /* En mòbil, tot en una columna */
+    }
+
+    .genre-space.large {
+        grid-column: span 1; /* En mòbil, tots ocupen una columna */
+    }
+
+    .image-container-large {
+        height: 250px; /* Més baixa en mòbil, com les dels vinils */
+    }
+
+    .genre-overlay h3 {
+        font-size: 32px; /* Més petit en mòbil */
+    }
+
+    .artists-section h2 {
+        font-size: 24px;
+    }
+
+    .offers-full-banner {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+
+    #offers-marquee-top,
+    #offers-marquee-bottom {
+        height: 16px;
+    }
+
+    .offers-section {
+        padding: 0 20px 80px;
+    }
+
+    /* Responsive per reventa */
+    .resale-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .resale-container.active .resale-card,
+    .resale-container.active .resale-form {
+        transform: none;
+        order: initial;
+    }
+
+    .resale-examples h2 {
+        font-size: 24px;
+    }
+}
+
+/* Accent per a diferents elements*/
+.accent-red {
+    color: #556b2f;
+}
